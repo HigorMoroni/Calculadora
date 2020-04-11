@@ -56,19 +56,20 @@ function criaCalculadora() {
         },
         realizaConta() {
             let conta = this.display.value;
-            conta = conta.replace('×', '*');
-            conta = conta.replace('÷', '/');
+            for (let letra in conta ) {
+                if (conta[letra] == '×') conta = conta.replace('×', '*');
+                if (conta[letra] == '÷') conta = conta.replace('÷', '/');
+            }
+            
             try {
                 conta = eval(conta);
                 if (!conta) {
                     alert('Conta inválida');
-                    //apagar o =
                     return;
                 }
                 this.display.value = String(conta);
             } catch (e) {
                 alert('Conta inválida');
-                //apagar o =
                 return;
             }
         },
@@ -87,7 +88,7 @@ function criaCalculadora() {
             })
         },
         btnParaDisplay(valor) {
-            this.display.value += valor;
+            if (this.display.value.length < 17) this.display.value += valor;
         }
     };
 }
