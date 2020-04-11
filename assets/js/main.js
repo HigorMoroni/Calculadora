@@ -55,11 +55,13 @@ function criaCalculadora() {
                 conta = eval(conta);
                 if (!conta) {
                     alert('Conta inválida');
+                    //apagar o =
                     return;
                 }
                 this.display.value = String(conta);
             } catch (e) {
                 alert('Conta inválida');
+                //apagar o =
                 return;
             }
         },
