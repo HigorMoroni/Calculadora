@@ -26,33 +26,25 @@ body {
   border-radius: 10px;
 }
 
-input, label, button {
-  display: block;
+.calculadora {
+  width: 400px;
+}
+
+.display {
+  font-size:  2em;
   width: 100%;
-  margin-bottom: 10px;
+  text-align: right;
 }
 
-input {
-  font-size: 24px;
+.btn {
+  width: 100%;
   height: 50px;
-  padding: 0 20px;
-}
-
-input:focus {
-  outline: 1px solid var(--primary-color);
-}
-
-button {
+  font-size: 1em;
   border: none;
-  background: var(--primary-color);
-  color: #fff;
-  font-size: 18px;
-  font-weight: 700;
-  height: 50px;
+  background: #dfdfdf;
   cursor: pointer;
-  margin-top: 30px;
 }
 
-button:hover {
-  background: var(--primary-color-darker);
+.btn:hover {
+  background: #9e9e9e;
 }
