@@ -8,11 +8,7 @@ function criaCalculadora() {
         },
         testaDigitos(e) {
             let evento = e.key
-            if (evento == 'C') evento = false
-            if (evento == '÷') evento = false
-            if (evento == '×') evento = false
-            if (evento == '←') evento = false
-            if (evento == '=') evento = false
+            if (evento == 'C' || evento == '÷' || evento == '×' || evento == '←' || evento == '=') evento = false
             if (evento == 'Delete') evento = 'C'
             if (evento == '/') evento = '÷'
             if (evento == '*') evento = '×'
