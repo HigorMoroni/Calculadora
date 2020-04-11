@@ -60,7 +60,6 @@ function criaCalculadora() {
                 if (conta[letra] == '×') conta = conta.replace('×', '*');
                 if (conta[letra] == '÷') conta = conta.replace('÷', '/');
             }
-            
             try {
                 conta = eval(conta);
                 if (!conta) {
