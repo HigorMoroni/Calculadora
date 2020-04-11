@@ -1,12 +1,28 @@
 function criaCalculadora() {
     return {
         display: document.querySelector('.display'),
+        botoes: document.querySelectorAll('.btn'),
         inicia() {
             this.cliqueBotoes();
-            this.pressionaEnter();
+            this.pressionarBotoes();
         },
-        pressionaEnter() {
-            this.display.addEventListener('keyup', e => {
+        encontraONumero(e) {
+            for (let i=0;i<=9;i++){
+                if (e.key == i) {
+                    for (let j in this.botoes) {
+                        if (this.botoes[j].innerText == i) return j
+                    }
+                }
+            }
+        },
+        pressionarBotoes() {
+            addEventListener('keydown', e => {
+                const chave = this.encontraONumero(e)
+                this.botoes[chave].classList.add('btn-ativo')
+                addEventListener('keyup', e => {
+                    const chave = this.encontraONumero(e)
+                    this.botoes[chave].classList.remove('btn-ativo')
+                })
                 if (e.keyCode == 13) {
                     this.realizaConta();
                 }

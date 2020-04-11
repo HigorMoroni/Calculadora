@@ -45,6 +45,6 @@ body {
   cursor: pointer;
 }
 
-.btn:hover {
+.btn:hover, .btn-ativo{
   background: #9e9e9e;
 }
