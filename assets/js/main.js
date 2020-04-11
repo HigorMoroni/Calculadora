@@ -30,15 +30,22 @@ function criaCalculadora() {
         pressionarBotoes() {
             addEventListener('keydown', e => {
                 const chave = this.testaDigitos(e)
-                if (chave) this.botoes[chave].classList.add('btn-ativo')
-                addEventListener('keyup', e => {
-                    const chave = this.testaDigitos(e)
-                    if (chave) this.botoes[chave].classList.remove('btn-ativo')
-                    if (e.keyCode == 13) {
+                if (chave) this.botoes[chave].classList.add('btn-ativo')               
+            })
+            addEventListener('keyup', e => {
+                const chave = this.testaDigitos(e)
+                if (chave) { 
+                    this.botoes[chave].classList.remove('btn-ativo')
+                    if (this.botoes[chave].classList.contains('btn-num')) {
+                        this.btnParaDisplay(this.botoes[chave].innerText);
+                    } else if (this.botoes[chave].classList.contains('btn-limpa')) {
+                        this.limparDisplay();
+                    } else if (this.botoes[chave].classList.contains('btn-del')) {
+                        this.apagaUm();
+                    } else if (this.botoes[chave].classList.contains('btn-igual')) {
                         this.realizaConta();
                     }
-                })
-                
+                }
             })
         },
         limparDisplay() {
