@@ -6,26 +6,39 @@ function criaCalculadora() {
             this.cliqueBotoes();
             this.pressionarBotoes();
         },
-        encontraONumero(e) {
-            for (let i=0;i<=9;i++){
-                if (e.key == i) {
-                    for (let j in this.botoes) {
-                        if (this.botoes[j].innerText == i) return j
-                    }
+        testaDigitos(e) {
+            let evento = e.key
+            if (evento == 'C') evento = false
+            if (evento == '÷') evento = false
+            if (evento == '×') evento = false
+            if (evento == '←') evento = false
+            if (evento == '=') evento = false
+            if (evento == 'Delete') evento = 'C'
+            if (evento == '/') evento = '÷'
+            if (evento == '*') evento = '×'
+            if (evento == ',') evento = '.'
+            if (evento == 'Backspace') evento = '←'
+            if (evento == 'Enter') evento = '='
+            if (evento) {
+                for (let i in this.botoes) {
+                    if (this.botoes[i].innerText == evento) return i
                 }
+            } else {
+                return evento
             }
         },
         pressionarBotoes() {
             addEventListener('keydown', e => {
-                const chave = this.encontraONumero(e)
-                this.botoes[chave].classList.add('btn-ativo')
+                const chave = this.testaDigitos(e)
+                if (chave) this.botoes[chave].classList.add('btn-ativo')
                 addEventListener('keyup', e => {
-                    const chave = this.encontraONumero(e)
-                    this.botoes[chave].classList.remove('btn-ativo')
+                    const chave = this.testaDigitos(e)
+                    if (chave) this.botoes[chave].classList.remove('btn-ativo')
+                    if (e.keyCode == 13) {
+                        this.realizaConta();
+                    }
                 })
-                if (e.keyCode == 13) {
-                    this.realizaConta();
-                }
+                
             })
         },
         limparDisplay() {
